@@ -6,6 +6,8 @@ Garden Fleet is an independent iOS application that helps you manage one or more
 
 > 🇩🇪 Eine deutsche Fassung dieser Erklärung steht unten unter [Datenschutzerklärung (Deutsch)](#datenschutzerkl%C3%A4rung-deutsch).
 
+> 📄 Provider / Legal Notice: see [IMPRESSUM.md](IMPRESSUM.md). The data controller for the purposes of GDPR Art. 4(7) is identified there.
+
 ## What data Garden Fleet uses
 
 Garden Fleet stores and processes the following data **only on your device**:

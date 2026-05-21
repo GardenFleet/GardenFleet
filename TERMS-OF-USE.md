@@ -4,6 +4,8 @@ _Last updated: 21. Mai 2026_
 
 > 🇩🇪 Eine deutsche Fassung steht unten unter [Nutzungsbedingungen (Deutsch)](#nutzungsbedingungen-deutsch).
 
+> 📄 Provider / Legal Notice: see [IMPRESSUM.md](IMPRESSUM.md).
+
 These Terms of Use ("Terms") govern your use of the Garden Fleet iOS application (the "App") developed and distributed by the Garden Fleet team ("we", "us", "developer"). By downloading, installing, or using the App, you agree to be bound by these Terms.
 
 If you do not agree, do not use the App.
