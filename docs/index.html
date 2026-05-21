@@ -616,7 +616,7 @@
         <button id="lang-de" aria-pressed="true" type="button">DE</button>
         <button id="lang-en" aria-pressed="false" type="button">EN</button>
       </div>
-      <a class="btn btn-primary" href="#pricing" data-de="Im App Store" data-en="On the App Store">Im App Store →</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/de/app/garden-fleet/id6771288984" target="_blank" rel="noopener" data-de="Im App Store" data-en="On the App Store" data-de-href="https://apps.apple.com/de/app/garden-fleet/id6771288984" data-en-href="https://apps.apple.com/us/app/garden-fleet/id6771288984">Im App Store →</a>
     </div>
   </nav>
 </header>
@@ -1134,7 +1134,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-de="Jederzeit monatlich kündbar" data-en="Cancel monthly anytime">Jederzeit monatlich kündbar</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-de="Abwicklung über Apple" data-en="Billed by Apple">Abwicklung über Apple</span></li>
         </ul>
-        <a class="btn btn-ghost" href="#download" data-de="Im App Store" data-en="On the App Store">Im App Store</a>
+        <a class="btn btn-ghost" href="https://apps.apple.com/de/app/garden-fleet/id6771288984" target="_blank" rel="noopener" data-de="Im App Store" data-en="On the App Store" data-de-href="https://apps.apple.com/de/app/garden-fleet/id6771288984" data-en-href="https://apps.apple.com/us/app/garden-fleet/id6771288984">Im App Store</a>
       </div>
 
       <div class="price-card featured reveal">
@@ -1146,7 +1146,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-de="Einmal pro Jahr abgebucht" data-en="Charged once per year">Einmal pro Jahr abgebucht</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-de="Günstiger pro Monat als monatlich" data-en="Lower monthly rate than the monthly plan">Günstiger pro Monat als monatlich</span></li>
         </ul>
-        <a class="btn btn-primary" href="#download" data-de="Im App Store" data-en="On the App Store">Im App Store</a>
+        <a class="btn btn-primary" href="https://apps.apple.com/de/app/garden-fleet/id6771288984" target="_blank" rel="noopener" data-de="Im App Store" data-en="On the App Store" data-de-href="https://apps.apple.com/de/app/garden-fleet/id6771288984" data-en-href="https://apps.apple.com/us/app/garden-fleet/id6771288984">Im App Store</a>
       </div>
     </div>
     <p class="price-foot" data-de="Den konkreten Preis siehst du im App Store auf deinem Gerät — Apple legt ihn pro Land fest. Beide Tiers schalten denselben vollen Funktionsumfang frei. Das Abo verlängert sich automatisch, solange du es nicht in den Apple-Account-Einstellungen kündigst."
@@ -1273,7 +1273,7 @@
       </p>
     </div>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="#" data-de="Im App Store laden" data-en="Download on the App Store">Im App Store laden</a>
+      <a class="btn btn-primary" href="https://apps.apple.com/de/app/garden-fleet/id6771288984" target="_blank" rel="noopener" data-de="Im App Store laden" data-en="Download on the App Store" data-de-href="https://apps.apple.com/de/app/garden-fleet/id6771288984" data-en-href="https://apps.apple.com/us/app/garden-fleet/id6771288984">Im App Store laden</a>
       <a class="btn btn-ghost" href="https://github.com/GardenFleet/GardenFleet">GitHub</a>
     </div>
   </div>
@@ -1303,7 +1303,7 @@
         <a href="#features" data-de="Funktionen" data-en="Features">Funktionen</a>
         <a href="#architecture" data-de="Architektur" data-en="Architecture">Architektur</a>
         <a href="#pricing" data-de="Preise" data-en="Pricing">Preise</a>
-        <a href="#download" data-de="Im App Store" data-en="On the App Store">Im App Store</a>
+        <a href="https://apps.apple.com/de/app/garden-fleet/id6771288984" target="_blank" rel="noopener" data-de="Im App Store" data-en="On the App Store" data-de-href="https://apps.apple.com/de/app/garden-fleet/id6771288984" data-en-href="https://apps.apple.com/us/app/garden-fleet/id6771288984">Im App Store</a>
       </div>
       <div class="foot-col">
         <h5 data-de="Rechtliches" data-en="Legal">Rechtliches</h5>
@@ -1367,6 +1367,16 @@
         var newSrc = img.getAttribute('data-' + lang + '-src');
         if (newSrc && img.getAttribute('src') !== newSrc) {
           img.setAttribute('src', newSrc);
+        }
+      });
+
+      // swap link targets on every <a> that defines per-language URLs
+      // (used for App-Store links — DE language → DE store, EN language → US store)
+      var langLinks = document.querySelectorAll('a[data-de-href][data-en-href]');
+      langLinks.forEach(function (a) {
+        var newHref = a.getAttribute('data-' + lang + '-href');
+        if (newHref && a.getAttribute('href') !== newHref) {
+          a.setAttribute('href', newHref);
         }
       });
 
