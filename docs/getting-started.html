@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erste Schritte · Garden Fleet</title>
+<meta name="description" content="Schritt-für-Schritt-Anleitung: GARDENA Smart System mit Garden Fleet verbinden.">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+:root {
+  --bg: #06180F;
+  --bg-2: #0A2418;
+  --forest: #0E3D29;
+  --surface: rgba(255,255,255,0.04);
+  --surface-strong: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+  --text: #ECF7EE;
+  --text-soft: #B7C7C0;
+  --text-mute: #7C8C85;
+  --accent: #4CAF50;
+  --accent-strong: #3FA047;
+  --green-deep: #1A6633;
+  --leaf: #6ECF6B;
+  --mint: #9DD9B2;
+  --water: #3FB6E7;
+  --amber: #F5B14C;
+  --rose: #F87171;
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --maxw: 1180px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 60px -20px rgba(0,0,0,0.45);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(800px 500px at 15% -10%, rgba(76,175,80,0.12), transparent 60%),
+    radial-gradient(900px 600px at 110% 0%, rgba(63,182,231,0.05), transparent 65%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+::selection { background: rgba(76,175,80,0.35); color: #fff; }
+a { color: var(--leaf); text-decoration: none; transition: color .2s var(--ease); }
+a:hover { color: var(--mint); text-decoration: underline; }
+
+/* ---------------- Nav ---------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(140%) blur(18px);
+  -webkit-backdrop-filter: saturate(140%) blur(18px);
+  background: rgba(6,14,16,0.78);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; max-width: var(--maxw); margin: 0 auto;
+}
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.01em; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--green-deep) 100%);
+  display: grid; place-items: center; color: var(--leaf);
+  font-weight: 900; font-size: 14px;
+  box-shadow: 0 6px 18px -8px rgba(0,0,0,0.55);
+}
+.brand-name { font-size: 15px; letter-spacing: .02em; }
+.nav-links { display: flex; gap: 20px; font-size: 14px; }
+.nav-link { color: var(--text-soft); }
+.nav-link:hover { color: var(--text); text-decoration: none; }
+.nav-link.active { color: var(--leaf); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-toggle {
+  display: inline-flex; border: 1px solid var(--border-strong);
+  border-radius: 999px; overflow: hidden; background: var(--surface);
+}
+.lang-toggle button {
+  background: transparent; color: var(--text-soft); border: 0;
+  padding: 6px 12px; cursor: pointer; font-size: 12px; font-weight: 600;
+  letter-spacing: .04em;
+}
+.lang-toggle button[aria-pressed="true"] {
+  background: var(--accent); color: #001b00;
+}
+
+/* ---------------- Layout ---------------- */
+.shell {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .shell { grid-template-columns: 1fr; gap: 0; }
+  .sidebar { position: static; max-height: none; }
+  .toc-toggle { display: flex !important; }
+  .toc-wrap { display: none; }
+  .toc-wrap.open { display: block; }
+}
+
+/* ---------------- Sidebar TOC ---------------- */
+.sidebar {
+  position: sticky; top: 78px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding-right: 12px;
+}
+.sidebar h3 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--text-mute); margin: 0 0 12px 4px; font-weight: 700;
+}
+.toc-toggle {
+  display: none;
+  margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--border-strong);
+  color: var(--text); border-radius: var(--radius-sm);
+  padding: 10px 14px; cursor: pointer; font-size: 14px; font-weight: 600;
+  align-items: center; gap: 8px;
+}
+.toc {
+  list-style: none; padding: 0; margin: 0; font-size: 13.5px;
+  border-left: 1px solid var(--border);
+}
+.toc li { line-height: 1.4; }
+.toc li a {
+  display: block; padding: 6px 12px; margin-left: -1px;
+  color: var(--text-soft); border-left: 1px solid transparent;
+  transition: all .15s var(--ease);
+}
+.toc li a:hover { color: var(--text); text-decoration: none; }
+.toc li a.active {
+  color: var(--leaf); border-left-color: var(--accent);
+  background: linear-gradient(90deg, rgba(76,175,80,0.08), transparent);
+}
+.toc li.level-3 a { padding-left: 24px; font-size: 12.5px; color: var(--text-mute); }
+.toc li.level-3 a:hover { color: var(--text-soft); }
+
+/* ---------------- Article ---------------- */
+.article {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 48px 56px;
+  box-shadow: var(--shadow-card);
+  font-size: 16px;
+  min-width: 0;
+}
+@media (max-width: 720px) {
+  .article { padding: 28px 22px; border-radius: var(--radius); font-size: 15px; }
+}
+
+/* Article typography */
+.article h1 {
+  font-size: 36px; line-height: 1.15; letter-spacing: -0.02em;
+  margin: 0 0 8px; color: #fff;
+}
+.article > h2 {
+  font-size: 24px; line-height: 1.3; letter-spacing: -0.01em;
+  margin: 40px 0 14px; color: #fff;
+  padding-top: 16px; border-top: 1px solid var(--border);
+  scroll-margin-top: 80px;
+}
+.article > h2:first-of-type { border-top: 0; padding-top: 0; }
+.article h3 {
+  font-size: 18px; line-height: 1.3; margin: 28px 0 10px;
+  color: var(--mint); scroll-margin-top: 80px;
+}
+.article p { margin: 0 0 14px; color: var(--text-soft); }
+.article strong { color: var(--text); font-weight: 600; }
+.article em { color: var(--text); }
+.article ul, .article ol { margin: 0 0 16px; padding-left: 24px; color: var(--text-soft); }
+.article li { margin: 6px 0; }
+.article li > strong:first-child { color: var(--leaf); }
+.article hr {
+  border: 0; border-top: 1px solid var(--border-strong);
+  margin: 40px 0;
+}
+.article code {
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  background: rgba(0,0,0,0.35); border: 1px solid var(--border);
+  padding: 2px 6px; border-radius: 6px; font-size: 0.9em;
+  color: var(--leaf);
+}
+.article pre {
+  background: rgba(0,0,0,0.45); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 18px;
+  overflow-x: auto; margin: 0 0 18px;
+  font-size: 13px; line-height: 1.5;
+}
+.article pre code {
+  background: transparent; border: 0; padding: 0; color: var(--text);
+  font-size: 13px;
+}
+.article blockquote {
+  margin: 0 0 18px; padding: 14px 18px;
+  background: rgba(76,175,80,0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-soft);
+}
+.article blockquote p { margin: 0; }
+.article blockquote p + p { margin-top: 8px; }
+.article table {
+  width: 100%; border-collapse: collapse; margin: 0 0 18px;
+  font-size: 14px;
+}
+.article th, .article td {
+  text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border);
+}
+.article th { color: var(--text); font-weight: 600; }
+.article td { color: var(--text-soft); }
+.article a { color: var(--leaf); }
+.article a:hover { color: var(--mint); }
+
+/* Header link anchors (auto-added) */
+.article h2:hover .anchor,
+.article h3:hover .anchor { opacity: .5; }
+.anchor {
+  display: inline-block; margin-left: 8px; opacity: 0;
+  color: var(--text-mute); font-weight: normal;
+  transition: opacity .15s var(--ease);
+}
+.anchor:hover { opacity: 1 !important; color: var(--leaf) !important; }
+
+/* Loader */
+.loader {
+  text-align: center; padding: 80px 20px; color: var(--text-mute);
+}
+.loader-dot {
+  display: inline-block; width: 8px; height: 8px;
+  background: var(--accent); border-radius: 50%; margin: 0 3px;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+.loader-dot:nth-child(2) { animation-delay: 0.2s; }
+.loader-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Footer */
+.page-footer {
+  max-width: var(--maxw); margin: 60px auto 30px;
+  padding: 30px 24px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+  font-size: 13px; color: var(--text-mute);
+}
+.page-footer a { color: var(--text-soft); }
+.page-footer .left { display: flex; gap: 18px; flex-wrap: wrap; }
+
+.github-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--text-soft); font-size: 13px; font-weight: 500;
+  transition: all .2s var(--ease);
+}
+.github-pill:hover {
+  background: var(--surface-strong); color: var(--text);
+  text-decoration: none; border-color: var(--accent);
+}
+.github-pill svg { width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">GF</div>
+      <span class="brand-name">Garden Fleet</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" data-de="Startseite" data-en="Home">Startseite</a>
+      <a class="nav-link active" href="getting-started.html" data-de="Erste Schritte" data-en="Getting Started">Erste Schritte</a>
+      <a class="nav-link" href="user-guide.html" data-de="Handbuch" data-en="User Guide">Handbuch</a>
+      <a class="nav-link" href="accessibility.html" data-de="Barrierefreiheit" data-en="Accessibility">Barrierefreiheit</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Sprache wählen / Language">
+        <button id="lang-de" aria-pressed="true" type="button">DE</button>
+        <button id="lang-en" aria-pressed="false" type="button">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+
+  <aside class="sidebar">
+    <button class="toc-toggle" id="toc-toggle" aria-expanded="false">
+      <span data-de="📑 Inhalt" data-en="📑 Contents">📑 Inhalt</span>
+    </button>
+    <div class="toc-wrap" id="toc-wrap">
+      <h3 data-de="Inhalt" data-en="Contents">Inhalt</h3>
+      <ul class="toc" id="toc"><!-- generated --></ul>
+    </div>
+  </aside>
+
+  <article class="article" id="article">
+    <div class="loader" id="loader">
+      <div>
+        <span class="loader-dot"></span>
+        <span class="loader-dot"></span>
+        <span class="loader-dot"></span>
+      </div>
+      <p style="margin-top: 16px;" data-de="Lade Anleitung …" data-en="Loading guide …">Lade Anleitung …</p>
+    </div>
+  </article>
+
+</div>
+
+<footer class="page-footer">
+  <div class="left">
+    <span>© 2026 Garden Fleet</span>
+    <a href="../legal/PRIVACY-POLICY.md" target="_blank" rel="noopener" data-de="Datenschutz" data-en="Privacy">Datenschutz</a>
+    <a href="../legal/TERMS-OF-USE.md" target="_blank" rel="noopener" data-de="Nutzungsbedingungen" data-en="Terms">Nutzungsbedingungen</a>
+    <a href="../legal/IMPRESSUM.md" target="_blank" rel="noopener">Impressum</a>
+  </div>
+  <a class="github-pill" id="raw-link" href="#" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    <span data-de="Auf GitHub ansehen" data-en="View on GitHub">Auf GitHub ansehen</span>
+  </a>
+</footer>
+
+<script>
+// ---- Config ----
+const MD_FILENAME = 'GETTING-STARTED.md';
+const DE_SEPARATOR_REGEX = /^# (Erste Schritte mit Garden Fleet \(Deutsch\)|Benutzerhandbuch \(Deutsch\)|Bedienungshilfen \(Deutsch\))/m;
+const GITHUB_REPO = 'GardenFleet/GardenFleet';
+const GITHUB_BRANCH = 'main';
+const HELP_FOLDER = 'help';
+
+// ---- Helpers ----
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+function setLang(lang) {
+  localStorage.setItem('gf-lang', lang);
+  document.documentElement.lang = lang;
+  $('#lang-de').setAttribute('aria-pressed', String(lang === 'de'));
+  $('#lang-en').setAttribute('aria-pressed', String(lang === 'en'));
+
+  // Swap data-de/data-en text everywhere on the page chrome
+  $$('[data-de]').forEach(el => {
+    const txt = el.getAttribute('data-' + lang);
+    if (txt) el.textContent = txt;
+  });
+
+  // Re-render article (we keep the full MD in memory)
+  renderArticle();
+}
+
+let RAW_MD = '';
+
+function splitByLanguage(md) {
+  const match = md.match(DE_SEPARATOR_REGEX);
+  if (!match) return { en: md, de: md };
+  const idx = match.index;
+  const en = md.slice(0, idx).replace(/\n>\s*🇩🇪[^\n]*\n>?[^\n]*\n/g, '\n').trim();
+  const de = md.slice(idx).trim();
+  return { en, de };
+}
+
+function slugify(text) {
+  return text.toLowerCase()
+    .replace(/[„""'']/g, '')
+    .replace(/[^\w\s-äöüß]/g, '')
+    .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u').replace(/ß/g, 'ss')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function buildTOC(articleEl) {
+  const headings = articleEl.querySelectorAll('h2, h3');
+  const toc = $('#toc');
+  toc.innerHTML = '';
+  headings.forEach((h) => {
+    if (!h.id) h.id = slugify(h.textContent);
+    // Add anchor link
+    if (!h.querySelector('.anchor')) {
+      const a = document.createElement('a');
+      a.className = 'anchor';
+      a.href = '#' + h.id;
+      a.textContent = '#';
+      a.setAttribute('aria-hidden', 'true');
+      h.appendChild(a);
+    }
+    const li = document.createElement('li');
+    li.className = 'level-' + (h.tagName === 'H3' ? '3' : '2');
+    const link = document.createElement('a');
+    link.href = '#' + h.id;
+    link.textContent = h.textContent.replace(/#$/, '').trim();
+    li.appendChild(link);
+    toc.appendChild(li);
+  });
+  setupScrollSpy(headings);
+}
+
+function setupScrollSpy(headings) {
+  if (!headings.length) return;
+  const tocLinks = $$('#toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+}
+
+function renderArticle() {
+  if (!RAW_MD) return;
+  const lang = localStorage.getItem('gf-lang') || 'de';
+  const { en, de } = splitByLanguage(RAW_MD);
+  const md = lang === 'de' ? de : en;
+
+  marked.setOptions({ breaks: false, gfm: true });
+  const html = marked.parse(md);
+  const article = $('#article');
+  article.innerHTML = html;
+  buildTOC(article);
+  // Scroll into view if hash present
+  if (location.hash) {
+    setTimeout(() => {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+async function loadMD() {
+  // Try local relative first (works with `python -m http.server -d public 8080`),
+  // then fall back to raw.githubusercontent.com (works on live GitHub Pages).
+  const relativeUrl = '../' + HELP_FOLDER + '/' + MD_FILENAME;
+  const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/${HELP_FOLDER}/${MD_FILENAME}`;
+  // The GitHub web view URL (for the "View on GitHub" footer link)
+  const ghViewUrl = `https://github.com/${GITHUB_REPO}/blob/${GITHUB_BRANCH}/${HELP_FOLDER}/${MD_FILENAME}`;
+  $('#raw-link').href = ghViewUrl;
+
+  for (const url of [relativeUrl, rawUrl]) {
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) continue;
+      RAW_MD = await res.text();
+      renderArticle();
+      return;
+    } catch (e) {
+      // try next
+    }
+  }
+  // Both failed
+  $('#article').innerHTML = `
+    <h1 data-de="Anleitung konnte nicht geladen werden" data-en="Could not load guide">Anleitung konnte nicht geladen werden</h1>
+    <p data-de="Schaue direkt im GitHub-Repo:" data-en="Read it directly on GitHub:">Schaue direkt im GitHub-Repo:</p>
+    <p><a href="${ghViewUrl}" target="_blank">${ghViewUrl}</a></p>
+  `;
+}
+
+// ---- Init ----
+document.addEventListener('DOMContentLoaded', () => {
+  const stored = localStorage.getItem('gf-lang');
+  const lang = stored || (navigator.language && navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en');
+  setLang(lang);
+
+  $('#lang-de').addEventListener('click', () => setLang('de'));
+  $('#lang-en').addEventListener('click', () => setLang('en'));
+
+  $('#toc-toggle').addEventListener('click', () => {
+    const wrap = $('#toc-wrap');
+    wrap.classList.toggle('open');
+    const expanded = wrap.classList.contains('open');
+    $('#toc-toggle').setAttribute('aria-expanded', String(expanded));
+  });
+
+  loadMD();
+});
+</script>
+
+</body>
+</html>
