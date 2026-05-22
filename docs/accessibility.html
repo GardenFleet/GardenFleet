@@ -485,6 +485,35 @@ function rewriteImageSrc(articleEl) {
   });
 }
 
+
+function rewriteMdLinks(articleEl) {
+  const helpMap = {
+    'GETTING-STARTED.md': 'getting-started.html',
+    'USER-GUIDE.md': 'user-guide.html',
+    'ACCESSIBILITY.md': 'accessibility.html'
+  };
+  articleEl.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href || /^(https?:|mailto:|#)/i.test(href)) return;
+    const cleaned = href.replace(/^\.\//, '');
+    const [pathPart, hashPart] = cleaned.split('#');
+    const anchor = hashPart ? '#' + hashPart : '';
+    // Same-folder MD link to a help doc → matching .html on the same site
+    if (helpMap[pathPart]) {
+      a.setAttribute('href', helpMap[pathPart] + anchor);
+      return;
+    }
+    // ../legal/*.md → GitHub Markdown view (not deployed via Pages)
+    const legal = pathPart.match(/^\.\.\/legal\/([A-Z-]+\.md)$/);
+    if (legal) {
+      a.setAttribute('href', 'https://github.com/' + GITHUB_REPO + '/blob/' + GITHUB_BRANCH + '/legal/' + legal[1] + anchor);
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+      return;
+    }
+  });
+}
+
 function renderArticle() {
   if (!RAW_MD) return;
   const lang = localStorage.getItem('gf-lang') || 'de';
@@ -496,6 +525,7 @@ function renderArticle() {
   const article = $('#article');
   article.innerHTML = html;
   rewriteImageSrc(article);
+  rewriteMdLinks(article);
   buildTOC(article);
   // Scroll into view if hash present
   if (location.hash) {
