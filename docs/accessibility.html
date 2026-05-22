@@ -275,6 +275,42 @@ a:hover { color: var(--mint); text-decoration: underline; }
   text-decoration: none; border-color: var(--accent);
 }
 .github-pill svg { width: 16px; height: 16px; }
+
+.article img {
+  display: block;
+  max-width: 100%;
+  margin: 18px auto 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 32px -16px rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.2);
+}
+.article img + em,
+.article img + p > em:first-child {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-top: 4px;
+}
+.img-missing {
+  display: block;
+  padding: 28px;
+  text-align: center;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: 10px;
+  color: var(--text-mute);
+  background: rgba(255,255,255,0.02);
+  font-size: 13px;
+  margin: 18px 0;
+}
+.img-missing code {
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-soft);
+}
 </style>
 </head>
 <body>
@@ -427,6 +463,28 @@ function setupScrollSpy(headings) {
   headings.forEach(h => observer.observe(h));
 }
 
+
+function rewriteImageSrc(articleEl) {
+  const isLocalHttp = location.protocol === 'http:' && location.hostname === 'localhost';
+  articleEl.querySelectorAll('img').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (!src || /^(https?:|data:)/i.test(src)) return;
+    const rel = src.replace(/^\.\//, '');
+    if (isLocalHttp) {
+      img.src = '../' + HELP_FOLDER + '/' + rel;
+    } else {
+      img.src = 'https://raw.githubusercontent.com/' + GITHUB_REPO + '/' + GITHUB_BRANCH + '/' + HELP_FOLDER + '/' + rel;
+    }
+    img.loading = 'lazy';
+    img.addEventListener('error', () => {
+      const fallback = document.createElement('div');
+      fallback.className = 'img-missing';
+      fallback.innerHTML = '⚠️ <span data-de="Bild fehlt" data-en="Image missing">Bild fehlt</span>: <code>' + rel + '</code>';
+      img.replaceWith(fallback);
+    });
+  });
+}
+
 function renderArticle() {
   if (!RAW_MD) return;
   const lang = localStorage.getItem('gf-lang') || 'de';
@@ -437,6 +495,7 @@ function renderArticle() {
   const html = marked.parse(md);
   const article = $('#article');
   article.innerHTML = html;
+  rewriteImageSrc(article);
   buildTOC(article);
   // Scroll into view if hash present
   if (location.hash) {
