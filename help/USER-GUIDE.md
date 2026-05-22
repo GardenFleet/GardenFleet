@@ -74,7 +74,9 @@ The dashboard is Garden Fleet's home screen. When you have at least one connecte
 - **Valves list** — every valve in the garden as a card with current state, runtime countdown if running, and quick controls.
 
 ### Reorder your gardens (drag & drop)
-New in 1.0.1: long-press the page indicator at the top and drag pages around to reorder your gardens. Your preferred order is remembered.
+New in 1.0.1: open **Settings → Reorder homes**, grab the right-side handle next to each garden, and drag it to its new position. The dashboard pager reflects the new order immediately, and your choice is remembered between launches.
+
+![Reorder homes view — drag handles on the right side](assets/app/house-reorder.png)
 
 ## 3. Connecting gardens
 
@@ -83,6 +85,8 @@ Already covered in [Getting Started → Step 5](GETTING-STARTED.md#step-5--conne
 
 ### Additional, independent gardens
 This is the killer feature: Garden Fleet supports any number of additional GARDENA accounts, **completely independent** from your first one.
+
+![Add Account view — live preview pill, accent color, symbol, location and "Sign in with GARDENA"](assets/app/add-account.png)
 
 1. Open **Settings → Add account**.
 2. Choose an accent color and symbol for the new garden (you can change both later).
@@ -96,7 +100,17 @@ This is the killer feature: Garden Fleet supports any number of additional GARDE
 There is no shared data between accounts — each garden's tokens, sensors, valves and history are stored independently in the Keychain. Removing one account does not affect any other.
 
 ### Re-authentication
-If a garden's OAuth refresh token expires (Husqvarna keeps them valid for 24h, but Garden Fleet refreshes them in the background every ~6h), or if you change your GARDENA password, the affected garden will show a yellow "Re-authentication needed" banner. Tap **"Re-authenticate"** in Edit Account and sign in again — your other gardens are unaffected.
+If a garden's OAuth refresh token expires (Husqvarna keeps them valid for 24h, but Garden Fleet refreshes them in the background every ~6h), or if you change your GARDENA password, the affected garden will show a yellow "Re-authentication needed" banner.
+
+Open **Edit Account** (via the House-Pill) and scroll to the **Connection** section. Tap **"Renew sign-in"**:
+
+![Edit Account — Connection section with "Renew sign-in" button](assets/app/reauth-banner.png)
+
+A secure system browser opens GARDENA's login page. Sign in again with the same GARDENA account that owns this garden's hardware:
+
+![Husqvarna OAuth re-login in the system browser](assets/app/reauth-banner-detail.png)
+
+After approval, the browser closes and Garden Fleet resumes the live connection. Your other gardens are unaffected.
 
 ### Removing a garden
 Open the garden you want to remove → House-Pill → **Edit Account** → scroll to the **Danger Zone** section → **Remove Account**. Garden Fleet revokes the OAuth tokens at Husqvarna immediately, then clears the local Keychain entries and cached data for this garden.
@@ -104,6 +118,8 @@ Open the garden you want to remove → House-Pill → **Edit Account** → scrol
 ## 4. Personalize a garden
 
 Every garden has its own visual identity. Open the **Edit Account** view from the House-Pill (bottom-left of the header) to customize:
+
+![Edit Account view — live preview, name, accent color, symbol, header image options](assets/app/edit-account.png)
 
 ### Header image
 Three options for what appears at the top of the page:
@@ -166,6 +182,8 @@ Tap the running valve and choose **Stop**.
 ### Stop-All
 When **any** valve in a garden is currently watering, the **Stop-All** button appears in the top-right of the dashboard header. Tap it (and confirm the dialog) to stop every active valve in that garden at once. This is your safety net for "I left a valve running by accident" moments.
 
+![Dashboard with an active valve — Stop-All button visible in the top-right of the header](assets/app/stop-all-active.png)
+
 ### What Garden Fleet sends to Husqvarna
 A start command includes the valve ID and the duration in seconds. A stop command includes only the valve ID. Garden Fleet does **not** send any other data with these commands. The HTTP request goes directly from your iPhone to Husqvarna's API, signed with your OAuth token.
 
@@ -198,6 +216,8 @@ Garden Fleet maintains a WebSocket connection to Husqvarna's Smart System API wh
 ## 8. Settings
 
 Open Settings via the gear icon in the dashboard toolbar (top-left).
+
+![Settings hub — Subscription, App, System sections](assets/app/settings-hub.png)
 
 ### Accounts
 - **Add account** — connect another GARDENA account (see [Section 3](#3-connecting-gardens)).
@@ -353,7 +373,9 @@ Das Dashboard ist der Startbildschirm von Garden Fleet. Sobald du mindestens ein
 - **Ventil-Liste** — jedes Ventil im Garten als Karte mit aktuellem Zustand, Restlaufzeit-Countdown wenn aktiv und Schnellbedienung.
 
 ### Gärten neu sortieren (Drag & Drop)
-Neu in 1.0.1: drücke lange auf die Seiten-Anzeige oben und ziehe die Seiten in deine Wunschreihenfolge. Die Reihenfolge bleibt gespeichert.
+Neu in 1.0.1: öffne **Einstellungen → Reihenfolge der Häuser**, greife den Griff rechts neben jedem Garten und ziehe ihn an die neue Position. Der Dashboard-Pager übernimmt die neue Reihenfolge sofort, und deine Auswahl bleibt zwischen App-Starts gespeichert.
+
+![Reihenfolge der Häuser — Drag-Handles rechts neben jedem Eintrag](assets/app/house-reorder.png)
 
 ## 3. Gärten verbinden
 
@@ -362,6 +384,8 @@ Bereits beschrieben in [Erste Schritte → Schritt 5](GETTING-STARTED.md#schritt
 
 ### Weitere, eigenständige Gärten
 Das ist das Killer-Feature: Garden Fleet unterstützt beliebig viele weitere GARDENA-Konten, **komplett unabhängig** von deinem ersten.
+
+![Account hinzufügen — Live-Vorschau-Pille, Akzentfarbe, Symbol, Standort und „Mit Gardena anmelden"](assets/app/add-account.png)
 
 1. Öffne **Einstellungen → Account hinzufügen**.
 2. Wähle eine Akzentfarbe und ein Symbol für den neuen Garten (beide kannst du später ändern).
@@ -375,7 +399,17 @@ Das ist das Killer-Feature: Garden Fleet unterstützt beliebig viele weitere GAR
 Es gibt keine geteilten Daten zwischen Accounts — die Tokens, Sensoren, Ventile und der Verlauf jedes Gartens werden eigenständig im Keychain gespeichert. Einen Account entfernen wirkt sich nicht auf andere aus.
 
 ### Re-Authentifizierung
-Wenn das OAuth-Refresh-Token eines Gartens abgelaufen ist (Husqvarna lässt sie 24h gültig, Garden Fleet erneuert sie aber alle ~6h im Hintergrund) oder du dein GARDENA-Passwort geändert hast, zeigt der betroffene Garten ein gelbes „Erneute Anmeldung nötig"-Banner. Tippe auf **„Erneut anmelden"** in „Account bearbeiten" und melde dich noch einmal an — deine anderen Gärten sind nicht betroffen.
+Wenn das OAuth-Refresh-Token eines Gartens abgelaufen ist (Husqvarna lässt sie 24h gültig, Garden Fleet erneuert sie aber alle ~6h im Hintergrund) oder du dein GARDENA-Passwort geändert hast, zeigt der betroffene Garten ein gelbes „Erneute Anmeldung nötig"-Banner.
+
+Öffne **„Haus bearbeiten"** (über die House-Pill) und scrolle zur Section **Verbindung**. Tippe auf **„Anmeldung erneuern"**:
+
+![Haus bearbeiten — Verbindung-Section mit „Anmeldung erneuern"-Button](assets/app/reauth-banner.png)
+
+Ein sicherer System-Browser öffnet die GARDENA-Anmeldeseite. Melde dich noch einmal mit demselben GARDENA-Konto an, dem die Hardware dieses Gartens gehört:
+
+![Husqvarna OAuth Re-Login im System-Browser](assets/app/reauth-banner-detail.png)
+
+Nach der Bestätigung schließt der Browser, und Garden Fleet nimmt die Live-Verbindung wieder auf. Deine anderen Gärten sind nicht betroffen.
 
 ### Einen Garten entfernen
 Den zu entfernenden Garten öffnen → House-Pill → **Account bearbeiten** → bis zur Section **Gefahrenzone** scrollen → **Account entfernen**. Garden Fleet widerruft sofort die OAuth-Tokens bei Husqvarna, dann werden die lokalen Keychain-Einträge und Cache-Daten dieses Gartens gelöscht.
@@ -383,6 +417,8 @@ Den zu entfernenden Garten öffnen → House-Pill → **Account bearbeiten** →
 ## 4. Einen Garten personalisieren
 
 Jeder Garten hat seine eigene visuelle Identität. Öffne **„Account bearbeiten"** über die House-Pill (links unten im Header), um anzupassen:
+
+![Haus bearbeiten — Live-Vorschau, Name, Akzentfarbe, Symbol, Header-Bild-Optionen](assets/app/edit-account.png)
 
 ### Header-Bild
 Drei Optionen für das, was oben auf der Seite erscheint:
@@ -445,6 +481,8 @@ Tippe das laufende Ventil an und wähle **Stoppen**.
 ### Stop-All
 Wenn **irgendein** Ventil in einem Garten aktuell bewässert, erscheint der **Stop-All**-Button rechts oben im Dashboard-Header. Tippe darauf (und bestätige den Dialog), um alle aktiven Ventile dieses Gartens auf einen Schlag zu stoppen. Das ist dein Sicherheitsnetz für „Ich habe versehentlich ein Ventil laufen lassen"-Momente.
 
+![Dashboard mit aktivem Ventil — Stop-All-Button rechts oben im Header sichtbar](assets/app/stop-all-active.png)
+
 ### Was Garden Fleet an Husqvarna sendet
 Ein Start-Befehl enthält die Ventil-ID und die Dauer in Sekunden. Ein Stop-Befehl enthält nur die Ventil-ID. Garden Fleet sendet **keine** weiteren Daten mit diesen Befehlen. Die HTTP-Anfrage geht direkt von deinem iPhone zu Husqvarnas API, signiert mit deinem OAuth-Token.
 
@@ -477,6 +515,8 @@ Garden Fleet hält eine WebSocket-Verbindung zu Husqvarnas Smart-System-API offe
 ## 8. Einstellungen
 
 Öffne die Einstellungen über das Zahnrad-Symbol in der Dashboard-Toolbar (links oben).
+
+![Settings-Hub — Abo, App, System Sections](assets/app/settings-hub.png)
 
 ### Accounts
 - **Account hinzufügen** — ein weiteres GARDENA-Konto verbinden (siehe [Abschnitt 3](#3-gärten-verbinden)).

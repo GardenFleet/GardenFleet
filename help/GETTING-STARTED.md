@@ -109,7 +109,10 @@ After the trial starts, you land on the onboarding screen that asks for your Hus
 1. Paste the **Application Key** (from Step 2.5) into the first field.
 2. Paste the **Application Secret** into the second field.
 3. Tap **Continue**.
-4. Garden Fleet now asks you to connect your first GARDENA account. Tap **Add account**.
+4. Garden Fleet now asks you to connect your first GARDENA account. Tap **Add house**.
+
+   ![Empty state — no homes connected yet, tap "Add house"](assets/app/empty-state.png)
+
 5. A secure Apple-managed browser opens GARDENA's login page. Sign in with the email and password of the **GARDENA account that owns the hardware** (not the developer account).
 
    ![Husqvarna OAuth login screen in the secure browser](assets/app/oauth-gardena-login.png)
@@ -285,7 +288,10 @@ Sobald die Probezeit gestartet ist, landest du auf dem Onboarding-Bildschirm, de
 1. Trage den **Application Key** (aus Schritt 2.5) ins erste Feld ein.
 2. Trage das **Application Secret** ins zweite Feld ein.
 3. Tippe auf **Weiter**.
-4. Garden Fleet bittet dich nun, dein erstes GARDENA-Konto zu verbinden. Tippe auf **Account hinzufügen**.
+4. Garden Fleet bittet dich nun, dein erstes GARDENA-Konto zu verbinden. Tippe auf **Haus hinzufügen**.
+
+   ![Leeres Dashboard — noch keine Häuser verbunden, tippe „Haus hinzufügen"](assets/app/empty-state.png)
+
 5. Ein von Apple bereitgestellter sicherer Browser öffnet die GARDENA-Anmeldeseite. Melde dich mit der E-Mail und dem Passwort des **GARDENA-Kontos an, dem die Hardware gehört** (nicht mit dem Developer-Account).
 
    ![GARDENA-Login im sicheren System-Browser](assets/app/oauth-gardena-login.png)
