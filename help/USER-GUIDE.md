@@ -10,6 +10,8 @@ This guide explains what Garden Fleet can do and how to use it day to day. If yo
 
 Garden Fleet is a multi-garden dashboard for the GARDENA Smart System. The core idea: every garden you connect gets its own page. You swipe horizontally between pages — exactly like Apple Weather between cities — and each page shows that garden's sensors, valves, weather and live status in real time.
 
+![One garden's dashboard with sensors, valves and weather](assets/app/dashboard-house.png)
+
 You're not limited to one GARDENA account. Vacation home, rental, client property — connect as many as you want, all from the same app on the same device. Garden Fleet keeps them strictly separate.
 
 ## 1. Privacy & security
@@ -60,6 +62,8 @@ The dashboard is Garden Fleet's home screen. When you have at least one connecte
 ### One garden vs. multiple gardens
 - **One garden:** the dashboard shows that garden directly. No page indicator.
 - **Two or more gardens:** the dashboard becomes a horizontal pager. Swipe left/right to switch, page indicator dots at the top tell you where you are. Your last-viewed page is remembered between launches.
+
+![Second garden as its own page — swipe horizontally to switch](assets/app/dashboard-multi-house.png)
 
 ### Anatomy of a garden page
 - **Header image** at the top — your own photo, the global default, or the accent color as a gradient (see [Personalization](#4-personalize-a-garden)).
@@ -140,6 +144,8 @@ In Edit Account → **Location**, enter the garden's address. Garden Fleet geoco
   - Multi-day outlook
   - **Irrigation recommendation** — Garden Fleet looks at upcoming precipitation and gives you a hint like "Likely no need to water today — 6mm rain expected".
 
+![Weather detail view with current conditions and irrigation recommendation](assets/app/weather-detail.png)
+
 ### Editing the location
 - In the Weather Detail View, tap **"Edit address"** — Garden Fleet now jumps **straight to the Location section** in Edit Account (new in 1.0.1; before it landed at the top of the form).
 - Update the address, tap **Save**. The weather updates within seconds.
@@ -151,6 +157,8 @@ Weather is cached for 60 minutes per garden. Pull-to-refresh forces a fresh fetc
 
 ### Manual start
 On the dashboard, tap a valve card and use the slider or quick-buttons (15, 30, 60 min) to start watering. A live **countdown** appears on the card, showing the remaining time.
+
+![Valve detail — manual irrigation running with a Stop button](assets/app/valve-detail-running.png)
 
 ### Manual stop
 Tap the running valve and choose **Stop**.
@@ -178,6 +186,8 @@ Not every sensor reports every value — what's available depends on the specifi
 
 ### Sensor strip on the dashboard
 Each sensor is one chip on the strip. Tap to open the **Sensor Detail View** with all available readings, the timestamp of the last update, and the sensor's location.
+
+![Sensor detail with soil moisture, temperature, humidity and light](assets/app/sensor-detail.png)
 
 ### "Last update X hours ago"
 Don't worry if a sensor's last update was an hour ago — that's normal. GARDENA's sensors are battery-driven and prioritize battery life over data freshness. Garden Fleet shows the most recent value the sensor has reported.
@@ -213,6 +223,10 @@ Garden Fleet supports nine of Apple's Accessibility Nutrition Labels (VoiceOver,
 ## 9. Garden Fleet Pro
 
 Garden Fleet is subscription-based. After the 7-day free trial you pick one of three plans:
+
+![Garden Fleet Pro paywall — example, prices vary by region](assets/app/paywall.png)
+
+> 💶 **About the prices in this screenshot:** the amounts shown are example values from the German App Store sandbox. **Actual prices vary by country and region** — Apple sets them based on your App Store, and the price your device shows is the one that applies. Garden Fleet never sees or handles billing — Apple does.
 
 - **Monthly** — paid every month.
 - **Yearly** — paid once a year (best per-month price).
@@ -275,6 +289,8 @@ Dieses Handbuch erklärt, was Garden Fleet kann und wie du sie täglich nutzt. W
 
 Garden Fleet ist ein Multi-Garten-Dashboard für das GARDENA Smart System. Die Grundidee: jeder verbundene Garten bekommt eine eigene Seite. Du wischst horizontal zwischen den Seiten — genau wie in Apple Wetter zwischen Städten — und siehst pro Seite die Sensoren, Ventile, das Wetter und den Live-Status dieses Gartens in Echtzeit.
 
+![Dashboard eines Gartens mit Sensoren, Ventilen und Wetter](assets/app/dashboard-house.png)
+
 Du bist nicht auf ein GARDENA-Konto beschränkt. Ferienhaus, Mietobjekt, Kundenanlage — verbinde so viele wie du willst, alle in derselben App auf demselben Gerät. Garden Fleet hält sie strikt voneinander getrennt.
 
 ## 1. Datenschutz & Sicherheit
@@ -325,6 +341,8 @@ Das Dashboard ist der Startbildschirm von Garden Fleet. Sobald du mindestens ein
 ### Ein Garten vs. mehrere Gärten
 - **Ein Garten:** das Dashboard zeigt diesen Garten direkt. Keine Seiten-Anzeige.
 - **Zwei oder mehr Gärten:** das Dashboard wird zu einem horizontalen Pager. Wische nach links/rechts zum Wechseln; Seiten-Anzeige-Punkte oben zeigen dir, wo du bist. Deine zuletzt angezeigte Seite wird zwischen App-Starts gemerkt.
+
+![Zweiter Garten als eigene Seite — horizontal wischen zum Wechseln](assets/app/dashboard-multi-house.png)
 
 ### Aufbau einer Garten-Seite
 - **Header-Bild** ganz oben — dein eigenes Foto, das globale Standardbild oder die Akzentfarbe als Farbverlauf (siehe [Personalisierung](#4-einen-garten-personalisieren)).
@@ -405,6 +423,8 @@ In „Account bearbeiten" → **Standort**, gib die Adresse des Gartens ein. Gar
   - Mehrtages-Ausblick
   - **Bewässerungs-Empfehlung** — Garden Fleet schaut auf den kommenden Niederschlag und gibt dir einen Hinweis wie „Heute vermutlich keine Bewässerung nötig — 6mm Regen erwartet".
 
+![Wetter-Detail mit aktuellen Bedingungen und Bewässerungs-Empfehlung](assets/app/weather-detail.png)
+
 ### Standort ändern
 - In der Wetter-Detailansicht: tippe **„Adresse ändern"** — Garden Fleet springt jetzt **direkt zur Standort-Sektion** in „Account bearbeiten" (neu in 1.0.1; vorher landete man am Formular-Anfang).
 - Adresse aktualisieren, **Speichern** tippen. Das Wetter aktualisiert sich innerhalb weniger Sekunden.
@@ -416,6 +436,8 @@ Wetter wird pro Garten 60 Minuten gecached. Pull-to-Refresh erzwingt einen frisc
 
 ### Manuelles Starten
 Tippe auf dem Dashboard ein Ventil-Karte an und nutze den Schieberegler oder die Schnellauswahl-Buttons (15, 30, 60 Min), um die Bewässerung zu starten. Ein Live-**Countdown** erscheint auf der Karte und zeigt die Restlaufzeit an.
+
+![Ventil-Detail mit laufender Bewässerung und Stop-Button](assets/app/valve-detail-running.png)
 
 ### Manuelles Stoppen
 Tippe das laufende Ventil an und wähle **Stoppen**.
@@ -443,6 +465,8 @@ Nicht jeder Sensor sendet jeden Wert — was verfügbar ist, hängt vom konkrete
 
 ### Sensor-Strip auf dem Dashboard
 Jeder Sensor ist ein Chip im Strip. Tippe darauf, um die **Sensor-Detailansicht** mit allen verfügbaren Werten, dem Zeitstempel der letzten Aktualisierung und dem Standort des Sensors zu öffnen.
+
+![Sensor-Detail mit Bodenfeuchte, Temperatur, Luftfeuchte und Licht](assets/app/sensor-detail.png)
 
 ### „Letzte Aktualisierung vor X Stunden"
 Keine Sorge, wenn der letzte Sensor-Wert eine Stunde alt ist — das ist normal. GARDENAs Sensoren sind batteriegetrieben und priorisieren Akku-Laufzeit über Daten-Aktualität. Garden Fleet zeigt den aktuellsten Wert, den der Sensor gesendet hat.
@@ -478,6 +502,10 @@ Garden Fleet unterstützt neun von Apples Accessibility Nutrition Labels (VoiceO
 ## 9. Garden Fleet Pro
 
 Garden Fleet ist abo-basiert. Nach der 7-tägigen kostenlosen Probezeit wählst du einen von drei Plänen:
+
+![Garden Fleet Pro Paywall — Beispiel, Preise je nach Region unterschiedlich](assets/app/paywall.png)
+
+> 💶 **Zu den Preisen im Screenshot:** die angezeigten Beträge sind Beispielwerte aus der deutschen App-Store-Sandbox. **Die tatsächlichen Preise unterscheiden sich nach Land und Region** — Apple legt sie basierend auf deinem App Store fest, und der Preis, den dein Gerät anzeigt, ist der für dich gültige. Garden Fleet sieht oder verarbeitet keine Abrechnungsdaten — das übernimmt Apple.
 
 - **Monatlich** — wird monatlich abgebucht.
 - **Jährlich** — wird einmal im Jahr abgebucht (bester Preis pro Monat).

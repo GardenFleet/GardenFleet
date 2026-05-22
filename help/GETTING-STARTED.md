@@ -31,7 +31,7 @@ GARDENA hardware
    Garden Fleet  ◄────────── you, on your iPhone
 ```
 
-> ⚠️ **Note about screenshots and UI labels in this guide:** Husqvarna's Developer Portal evolves over time — button labels, sidebar positions or wording may change. The **principle** stays the same. If something looks different on your screen, always trust Husqvarna's [official documentation](https://developer.husqvarnagroup.cloud/docs) as the source of truth.
+> ⚠️ **Note about screenshots and UI labels in this guide:** Husqvarna's Developer Portal evolves over time — button labels, sidebar positions or wording may change. The **principle** stays the same. If something looks different on your screen, always trust Husqvarna's [official "Get started" guide](https://developer.husqvarnagroup.cloud/docs/get-started) as the source of truth.
 
 ## Step 1 — Create a Husqvarna Developer account (≈ 5 min)
 
@@ -39,11 +39,13 @@ GARDENA hardware
 2. Click **Sign up** and register with a real email address. You don't need to be a developer — this account is free and exists exactly for what we are about to do.
 3. Verify the email and sign in.
 
-> Official Husqvarna onboarding documentation: **<https://developer.husqvarnagroup.cloud/docs>**
+> Official Husqvarna onboarding documentation: **<https://developer.husqvarnagroup.cloud/docs/get-started>**
 
 ## Step 2 — Create an Application (≈ 3 min)
 
 The Application is the bridge between Garden Fleet on your iPhone and your GARDENA hardware.
+
+![Husqvarna Developer Portal — Create Application button](assets/dev-portal/create-app.png)
 
 1. In the developer portal, open **My applications → Create application**.
 2. Fill in the form:
@@ -65,11 +67,13 @@ The Application is the bridge between Garden Fleet on your iPhone and your GARDE
 
    You don't need to connect any other API (Automower, Husqvarna Fleet, etc.) — Garden Fleet only uses the two above.
 
+   ![Connected APIs section — both Authentication API and GARDENA Smart System API enabled](assets/dev-portal/connected-apis.png)
+
 5. Stay on this page. You'll see two values you need next — keep them handy:
    - **Application Key** (sometimes also called *Client ID*)
    - **Application Secret** (sometimes also called *Client Secret*)
 
-> Husqvarna's official guide for creating an application is reachable through the same documentation site: **<https://developer.husqvarnagroup.cloud/docs>**
+> Husqvarna's official guide for creating an application is reachable through the same documentation site: **<https://developer.husqvarnagroup.cloud/docs/get-started>**
 
 ## Step 3 — Want to try Garden Fleet first? Use Demo Mode (≈ 30 sec)
 
@@ -85,6 +89,10 @@ Demo Mode is a real walkthrough of the UI; only the cloud calls are stubbed out.
 
 Garden Fleet is subscription-based with a 7-day free trial:
 
+![Garden Fleet Pro paywall — example only, prices vary by region](assets/app/paywall.png)
+
+> 💶 **About the prices in this screenshot:** the amounts shown above are example values from the German App Store sandbox. **Actual prices vary by country and region** — Apple sets them based on your App Store. The price your device shows when you open Garden Fleet is the one that applies. Garden Fleet never sees or handles billing — Apple does that for us.
+
 1. On the paywall, choose a plan (**Monthly**, **Yearly** or **Yearly with monthly billing**) and tap **"Start 7-Day Free Trial"**.
 2. Apple asks you to confirm — Face ID / Touch ID or your Apple Account password.
 3. The trial starts immediately. You will **not** be charged until day 7 — if you cancel before then, you pay nothing.
@@ -96,12 +104,19 @@ What Pro unlocks: multi-account management, Garden Weather, per-home personaliza
 
 After the trial starts, you land on the onboarding screen that asks for your Husqvarna credentials:
 
+![Onboarding screen — paste Application Key and Secret](assets/app/onboarding-app-key.png)
+
 1. Paste the **Application Key** (from Step 2.5) into the first field.
 2. Paste the **Application Secret** into the second field.
 3. Tap **Continue**.
 4. Garden Fleet now asks you to connect your first GARDENA account. Tap **Add account**.
 5. A secure Apple-managed browser opens GARDENA's login page. Sign in with the email and password of the **GARDENA account that owns the hardware** (not the developer account).
+
+   ![Husqvarna OAuth login screen in the secure browser](assets/app/oauth-gardena-login.png)
+
 6. After approval, the browser closes automatically and you land on your first dashboard.
+
+![Your first connected garden on the dashboard](assets/app/dashboard-house.png)
 
 > 🔐 **Where do your credentials live?** The Application Key, Secret and the OAuth tokens for each connected GARDENA account are stored **only** in the iOS Keychain on your device. There are no Garden Fleet servers between you and Husqvarna. If you uninstall the app, everything is gone with it. See the [User Guide](USER-GUIDE.md#1-privacy--security) for the full picture.
 
@@ -192,7 +207,7 @@ GARDENA-Hardware
    Garden Fleet  ◄────────── du, auf deinem iPhone
 ```
 
-> ⚠️ **Hinweis zu Screenshots und UI-Bezeichnungen in dieser Anleitung:** Husqvarnas Developer Portal entwickelt sich weiter — Button-Beschriftungen, Sidebar-Positionen oder Formulierungen können sich ändern. Das **Prinzip** bleibt gleich. Wenn etwas bei dir anders aussieht, ist Husqvarnas [offizielle Dokumentation](https://developer.husqvarnagroup.cloud/docs) immer die verbindliche Quelle.
+> ⚠️ **Hinweis zu Screenshots und UI-Bezeichnungen in dieser Anleitung:** Husqvarnas Developer Portal entwickelt sich weiter — Button-Beschriftungen, Sidebar-Positionen oder Formulierungen können sich ändern. Das **Prinzip** bleibt gleich. Wenn etwas bei dir anders aussieht, ist Husqvarnas [offizielle „Get started"-Anleitung](https://developer.husqvarnagroup.cloud/docs/get-started) immer die verbindliche Quelle.
 
 ## Schritt 1 — Husqvarna Developer Account anlegen (≈ 5 Min)
 
@@ -200,11 +215,13 @@ GARDENA-Hardware
 2. Klicke auf **Sign up** und registriere dich mit einer echten E-Mail-Adresse. Du musst kein Entwickler sein — dieser Account ist kostenlos und existiert genau für das, was wir gleich machen.
 3. Bestätige die E-Mail und melde dich an.
 
-> Offizielle Husqvarna-Doku zum Entwickler-Portal: **<https://developer.husqvarnagroup.cloud/docs>**
+> Offizielle Husqvarna-Doku zum Entwickler-Portal: **<https://developer.husqvarnagroup.cloud/docs/get-started>**
 
 ## Schritt 2 — Application anlegen (≈ 3 Min)
 
 Die Application ist die Brücke zwischen Garden Fleet auf deinem iPhone und deiner GARDENA-Hardware.
+
+![Husqvarna Developer Portal — Button „Create Application"](assets/dev-portal/create-app.png)
 
 1. Im Developer Portal: **My applications → Create application**.
 2. Fülle das Formular aus:
@@ -226,11 +243,13 @@ Die Application ist die Brücke zwischen Garden Fleet auf deinem iPhone und dein
 
    Andere APIs (Automower, Husqvarna Fleet, …) musst du nicht verbinden — Garden Fleet nutzt nur die beiden oben genannten.
 
+   ![Connected APIs — Authentication API und GARDENA Smart System API beide aktiviert](assets/dev-portal/connected-apis.png)
+
 5. Bleibe auf dieser Seite. Du siehst zwei Werte, die du gleich brauchst — halte sie bereit:
    - **Application Key** (manchmal auch *Client ID* genannt)
    - **Application Secret** (manchmal auch *Client Secret* genannt)
 
-> Husqvarnas offizielle Anleitung zum Anlegen einer Application liegt im selben Doku-Portal: **<https://developer.husqvarnagroup.cloud/docs>**
+> Husqvarnas offizielle Anleitung zum Anlegen einer Application liegt im selben Doku-Portal: **<https://developer.husqvarnagroup.cloud/docs/get-started>**
 
 ## Schritt 3 — Garden Fleet erst ausprobieren? Demo-Modus (≈ 30 Sek)
 
@@ -246,6 +265,10 @@ Der Demo-Modus ist ein echter Rundgang durch das UI; nur die Cloud-Calls sind au
 
 Garden Fleet ist abo-basiert mit 7-tägiger kostenloser Probezeit:
 
+![Garden Fleet Pro Paywall — Beispiel, Preise je nach Region unterschiedlich](assets/app/paywall.png)
+
+> 💶 **Zu den Preisen im Screenshot:** die angezeigten Beträge sind Beispielwerte aus der deutschen App-Store-Sandbox. **Die tatsächlichen Preise unterscheiden sich nach Land und Region** — Apple legt sie basierend auf deinem App Store fest. Der Preis, den dein Gerät beim Öffnen von Garden Fleet anzeigt, ist der für dich gültige. Garden Fleet sieht oder verarbeitet keine Abrechnungsdaten — das übernimmt Apple.
+
 1. Auf der Paywall: wähle einen Plan (**Monatlich**, **Jährlich** oder **Jährlich mit Monatszahlung**) und tippe auf **„7-Tage-Probezeit starten"**.
 2. Apple bittet dich um Bestätigung — Face ID / Touch ID oder dein Apple-Konto-Passwort.
 3. Die Probezeit startet sofort. Es wird **nichts** abgebucht, bevor Tag 7 abgelaufen ist — wenn du vorher kündigst, zahlst du nichts.
@@ -257,12 +280,19 @@ Was Pro freischaltet: Multi-Account-Verwaltung, Garden Weather, Personalisierung
 
 Sobald die Probezeit gestartet ist, landest du auf dem Onboarding-Bildschirm, der nach deinen Husqvarna-Zugangsdaten fragt:
 
+![Onboarding — Application Key und Secret eintragen](assets/app/onboarding-app-key.png)
+
 1. Trage den **Application Key** (aus Schritt 2.5) ins erste Feld ein.
 2. Trage das **Application Secret** ins zweite Feld ein.
 3. Tippe auf **Weiter**.
 4. Garden Fleet bittet dich nun, dein erstes GARDENA-Konto zu verbinden. Tippe auf **Account hinzufügen**.
 5. Ein von Apple bereitgestellter sicherer Browser öffnet die GARDENA-Anmeldeseite. Melde dich mit der E-Mail und dem Passwort des **GARDENA-Kontos an, dem die Hardware gehört** (nicht mit dem Developer-Account).
+
+   ![GARDENA-Login im sicheren System-Browser](assets/app/oauth-gardena-login.png)
+
 6. Nach der Bestätigung schließt sich der Browser automatisch, und du landest auf deinem ersten Dashboard.
+
+![Dein erster verbundener Garten auf dem Dashboard](assets/app/dashboard-house.png)
 
 > 🔐 **Wo liegen deine Zugangsdaten?** Der Application Key, das Secret und die OAuth-Tokens jedes verbundenen GARDENA-Kontos werden **ausschließlich** im iOS-Keychain auf deinem Gerät gespeichert. Es gibt keine Garden-Fleet-Server zwischen dir und Husqvarna. Wenn du die App deinstallierst, sind die Daten weg. Siehe [Benutzerhandbuch](USER-GUIDE.md#1-datenschutz--sicherheit) für das vollständige Bild.
 
