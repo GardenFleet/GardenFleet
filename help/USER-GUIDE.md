@@ -1,6 +1,6 @@
 # Garden Fleet — User Guide
 
-_Last updated: 22 May 2026 — covers app version 1.0.1_
+_Last updated: 28 October 2026 — covers app version 1.0.2_
 
 This guide explains what Garden Fleet can do and how to use it day to day. If you're setting up the app for the first time, start with the [Getting Started guide](GETTING-STARTED.md) — it walks you through the one-time Husqvarna and onboarding steps.
 
@@ -64,6 +64,14 @@ The dashboard is Garden Fleet's home screen. When you have at least one connecte
 - **Two or more gardens:** the dashboard becomes a horizontal pager. Swipe left/right to switch, page indicator dots at the top tell you where you are. Your last-viewed page is remembered between launches.
 
 ![Second garden as its own page — swipe horizontally to switch](assets/app/dashboard-multi-house.png)
+
+### "All Homes" overview
+New in 1.0.2: with two or more gardens, the pager starts with an **All Homes** page on the far left — swipe all the way left, or tap the grey first dot in the page indicator. It shows every connected garden as a card at a glance:
+- **Status** — the number of active valves (e.g. "2 valves active"), "All stopped", or a hint such as "Sign-in required" if a garden needs attention.
+- **Active valves** — up to three running valves per garden are listed by name.
+- **Sensors** — up to four sensors per garden with their latest moisture and temperature values.
+
+Tap a card to jump straight to that garden's page. If the overview was the last page you looked at, Garden Fleet opens on it again next time.
 
 ### Anatomy of a garden page
 - **Header image** at the top — your own photo, the global default, or the accent color as a gradient (see [Personalization](#4-personalize-a-garden)).
@@ -172,7 +180,7 @@ Weather is cached for 60 minutes per garden. Pull-to-refresh forces a fresh fetc
 ## 6. Operating valves
 
 ### Manual start
-On the dashboard, tap a valve card and use the slider or quick-buttons (15, 30, 60 min) to start watering. A live **countdown** appears on the card, showing the remaining time.
+On the dashboard, tap a valve card and use the slider or quick-buttons (15, 30, 60 min) to start watering. A live **countdown** appears on the card, showing the remaining time. When the countdown reaches zero, the card switches to **“Watering finished”** right away — even if the app was in the background — and updates to the closed state a few seconds later.
 
 ![Valve detail — manual irrigation running with a Stop button](assets/app/valve-detail-running.png)
 
@@ -301,7 +309,7 @@ For onboarding / Husqvarna setup issues, see [Getting Started → Troubleshootin
 
 # Benutzerhandbuch (Deutsch)
 
-_Letzte Aktualisierung: 22. Mai 2026 — gilt für App-Version 1.0.1_
+_Letzte Aktualisierung: 28. Oktober 2026 — gilt für App-Version 1.0.2_
 
 Dieses Handbuch erklärt, was Garden Fleet kann und wie du sie täglich nutzt. Wenn du die App zum ersten Mal einrichtest, starte mit der [Erste-Schritte-Anleitung](GETTING-STARTED.md#erste-schritte-mit-garden-fleet-deutsch) — sie führt dich durch die einmalige Husqvarna- und Onboarding-Einrichtung.
 
@@ -363,6 +371,14 @@ Das Dashboard ist der Startbildschirm von Garden Fleet. Sobald du mindestens ein
 - **Zwei oder mehr Gärten:** das Dashboard wird zu einem horizontalen Pager. Wische nach links/rechts zum Wechseln; Seiten-Anzeige-Punkte oben zeigen dir, wo du bist. Deine zuletzt angezeigte Seite wird zwischen App-Starts gemerkt.
 
 ![Zweiter Garten als eigene Seite — horizontal wischen zum Wechseln](assets/app/dashboard-multi-house.png)
+
+### Übersicht „Alle Häuser“
+Neu in 1.0.2: Ab zwei Gärten beginnt der Pager ganz links mit der Seite **Alle Häuser** — wische ganz nach links oder tippe auf den ersten, grauen Punkt in der Seiten-Anzeige. Dort siehst du alle verbundenen Gärten als Karten auf einen Blick:
+- **Status** — die Zahl der aktiven Ventile (z. B. „2 Ventile aktiv“), „Alles gestoppt“ oder ein Hinweis wie „Neu anmelden erforderlich“, wenn ein Garten Aufmerksamkeit braucht.
+- **Aktive Ventile** — bis zu drei laufende Ventile pro Garten mit Namen.
+- **Sensoren** — bis zu vier Sensoren pro Garten mit den letzten Werten für Feuchte und Temperatur.
+
+Ein Tipp auf eine Karte springt direkt zur Seite dieses Gartens. Warst du zuletzt auf der Übersicht, öffnet Garden Fleet beim nächsten Start wieder dort.
 
 ### Aufbau einer Garten-Seite
 - **Header-Bild** ganz oben — dein eigenes Foto, das globale Standardbild oder die Akzentfarbe als Farbverlauf (siehe [Personalisierung](#4-einen-garten-personalisieren)).
@@ -471,7 +487,7 @@ Wetter wird pro Garten 60 Minuten gecached. Pull-to-Refresh erzwingt einen frisc
 ## 6. Ventile bedienen
 
 ### Manuelles Starten
-Tippe auf dem Dashboard ein Ventil-Karte an und nutze den Schieberegler oder die Schnellauswahl-Buttons (15, 30, 60 Min), um die Bewässerung zu starten. Ein Live-**Countdown** erscheint auf der Karte und zeigt die Restlaufzeit an.
+Tippe auf dem Dashboard ein Ventil-Karte an und nutze den Schieberegler oder die Schnellauswahl-Buttons (15, 30, 60 Min), um die Bewässerung zu starten. Ein Live-**Countdown** erscheint auf der Karte und zeigt die Restlaufzeit an. Sobald der Countdown null erreicht, wechselt die Karte sofort auf **„Bewässerung beendet“** – auch wenn die App im Hintergrund war – und springt wenige Sekunden später auf den geschlossenen Zustand.
 
 ![Ventil-Detail mit laufender Bewässerung und Stop-Button](assets/app/valve-detail-running.png)
 
